@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng Duy</title>
+  <link rel="stylesheet" href="b4.css">
+</head>
+<body>
+
+  <div id="calculator">
+    <h2>MÁY TÍNH</h2>
+
+    <div class="input-container">
+      <input type="number" id="numberA" placeholder="Number A" oninput="displayNumberA()">
+    </div>
+
+    <div class="input-container">
+      <!-- Ô input cho Number B -->
+      <input type="number" id="numberB" placeholder="Number B" oninput="displayNumberB()">
+    </div>
+
+    <br>
+
+    <!-- Nút Cộng -->
+    <button onclick="calculate('summation')">+</button>
+
+    <!-- Nút Trừ -->
+    <button onclick="calculate('subtraction')">-</button>
+
+    <!-- Nút Nhân -->
+    <button onclick="calculate('multiplication')">*</button>
+
+    <!-- Nút Chia -->
+    <button onclick="calculate('division')">/</button>
+
+    <!-- Nút Clear -->
+    <button onclick="clearInputs()">Clear</button>
+
+    <h3 id="result"></h3>
+  </div>
+
+  <script>
+    function displayNumberA() {
+    // Lấy giá trị từ ô input Number A
+    let numberA = document.getElementById('numberA').value;
+    // Hiển thị giá trị của Number A trong nội dung của ô input
+    document.getElementById('numberA').value = numberA;
+  }
+
+  function displayNumberB() {
+    // Lấy giá trị từ ô input Number B
+    let numberB = document.getElementById('numberB').value;
+    // Hiển thị giá trị của Number B trong nội dung của ô input
+    document.getElementById('numberB').value = numberB;
+  }
+
+  function calculate(operation) {
+    // Lấy giá trị từ ô input
+    let numberA = parseFloat(document.getElementById('numberA').value);
+    let numberB = parseFloat(document.getElementById('numberB').value);
+
+    let result;
+    
+    // Thực hiện phép toán tương ứng với nút được click
+    switch (operation) {
+      case 'summation':
+        result = numberA + numberB;
+        break;
+      case 'subtraction':
+        result = numberA - numberB;
+        break;
+      case 'multiplication':
+        result = numberA * numberB;
+        break;
+      case 'division':
+        result = numberA / numberB;
+        break;
+      default:
+        result = 'Invalid operation';
+    }
+
+    // In kết quả ra màn hình
+    document.getElementById('result').innerText = `Result: ${result}`;
+    // document.getElementById('result').innerText = "Result: ${result}";
+  }
+
+  function clearInputs() {
+    // Xóa giá trị trong ô input và kết quả
+    document.getElementById('numberA').value = '';
+    document.getElementById('numberB').value = '';
+    document.getElementById('result').innerText = '';
+  }
+
+  </script>
+
+
+</body>
+</html>
